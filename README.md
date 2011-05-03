@@ -8,7 +8,7 @@ See: http://norvig.com/spell-correct.html
 Usage
 =====
 
-> require 'didyoumean'
-> corrector = Didyoumean::Corrector.new(File.read('big.txt'))
-> corrector.correct('abstrac')
-=> "abstract"
+    > require 'didyoumean'
+    > corrector = Didyoumean::Corrector.new(File.read('big.txt'))
+    > corrector.correct('abstrac')
+    => "abstract"
