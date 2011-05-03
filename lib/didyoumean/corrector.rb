@@ -11,8 +11,8 @@ module Didyoumean
       candidates.max_by{|w| @nwords[w]}
     end
 
-    def initialize(corpus_file)
-      @nwords = train(words(File.read(corpus_file)))
+    def initialize(corpus)
+      @nwords = train(words(corpus))
     end
     
   private
@@ -32,11 +32,11 @@ module Didyoumean
 
     def edits1(word)
       candidates = Set.new
-       word.length.times do |i|
-         x = word.dup
-         x.slice!(i)
-         candidates.add(x)
-       end
+      word.length.times do |i|
+        x = word.dup
+        x.slice!(i)
+        candidates.add(x)
+      end
 
       (word.length-1).times do |i|
         x = word.dup
