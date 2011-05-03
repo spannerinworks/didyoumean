@@ -32,18 +32,22 @@ module Didyoumean
 
     def edits1(word)
       candidates = Set.new
+
+      # extra char
       word.length.times do |i|
         x = word.dup
         x.slice!(i)
         candidates.add(x)
       end
 
+      # transpose char
       (word.length-1).times do |i|
         x = word.dup
         x[i], x[i+1] = x[i+1], x[i]
         candidates.add(x)
       end
 
+      # wrong char
       word.length.times do |i|
         ALPHABET.each_char do |a|
           x = word.dup
@@ -52,6 +56,7 @@ module Didyoumean
         end
       end
 
+      # missing char
       (-1..word.length-1).each do |i|
         ALPHABET.each_char do |a|
           x = word.dup
